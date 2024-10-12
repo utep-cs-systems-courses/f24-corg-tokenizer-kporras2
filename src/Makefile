@@ -3,7 +3,7 @@ OBJS= uimain.o tokenizer.o history.o
 
 
 # -g means debug and -03 mean optimization 
-CFLAGS = -g -03
+CFLAGS = -g -O3
 
 # building target file that is called tokenize
 all: tokenize
