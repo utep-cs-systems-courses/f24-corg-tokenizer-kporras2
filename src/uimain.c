@@ -5,7 +5,6 @@
 int main(){
   printf("Welcome to the tokenizer machine! \n");
   char token_input[100];
-  char *toks_ptr;
   char menu_input; // char used to dictate menu function
   char index_input[3];
   char idx = 0; // index of current token we are inputing
@@ -17,16 +16,19 @@ int main(){
     printf(">");
 
     menu_input = getchar();
-
+    getchar();
     switch(menu_input){
 
       case 't':
         //take user input and tokenize
-	printf("Please type what you would like to tokenize\n");
-	printf(">");
-
+	printf("Please type what you would like to tokenize\n >");
+	
 	fgets(token_input, sizeof(token_input), stdin);
 	//try to tokenize, tell user if sucessfull or not
+	char **tokens = tokenize(token_input);
+	printf("\n");
+	print_tokens(tokens);
+	free_tokens(tokens);
 	break;
 	
       case 'h':
