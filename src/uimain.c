@@ -6,9 +6,9 @@ int main(){
   printf("Welcome to the tokenizer machine! \n");
   char token_input[100];
   char menu_input; // char used to dictate menu function
-  char index_input[3];
-  char idx = 0; // index of current token we are inputing
-
+  char id_input[4];
+  char *retrived_token;
+  List *history = init_history();
   // main_menu loop
   while(1){
     printf("------------------------------------------\n");
@@ -27,14 +27,14 @@ int main(){
 	//try to tokenize, tell user if sucessfull or not
 	char **tokens = tokenize(token_input);
 	printf("\n");
+	add_history(history, token_input);
 	print_tokens(tokens);
 	free_tokens(tokens);
 	break;
 	
       case 'h':
         //print history in linked list
-	printf("Current token history:\n\n");
-	//print hitory here
+	print_history(history);
 	break;
 	
       case 'i':
@@ -42,9 +42,20 @@ int main(){
 	printf("Please enter the id of the token you are looking for\n");
 	printf(">");
 
-	fgets(index_input, sizeof(index_input), stdin);
+	fgets(id_input, sizeof(id_input), stdin);
+	scanf();
 	//call id finding
-	
+	if(get_history(history, id_input) != NULL){
+	  retrived_token = get_history(history, id_input);
+	}
+	else{
+	  break;
+	}
+
+	char **retrived = tokenize(retrived_token);
+	printf("\nRetrived token:\n");
+	print_tokens(retrived);
+	free_tokens(retrived);
 	break;
 	
       case 'q':
@@ -61,5 +72,7 @@ int main(){
   }
 
  end:
+  free_history(history);
+  printf("\nClosing tokenizer...\n");
   return 0;
 }
