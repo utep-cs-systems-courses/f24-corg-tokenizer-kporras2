@@ -24,7 +24,7 @@ void add_history(List *list, char *str){
 
   //verify node is not empty, because malloc returns NULL if unsucessfull memory location
   if(newNode == NULL){
-    printf("Creating node failed, could not allocate memory");
+    printf("\nCreating node failed, could not allocate memory\n");
     return;
   }
 
@@ -38,7 +38,7 @@ void add_history(List *list, char *str){
 
   //verify memory allocation was successfull
   if(newNode->str == NULL){
-    printf("allocating str in node failed");
+    printf("\nallocating str in node failed\n");
     free(newNode);
     return;
   }
@@ -108,6 +108,7 @@ void print_history(List *list){
     else{
       printf("\nID: %d, Str: NULL", temp->id);
     }
+    temp = temp->next;
   }
 }
 

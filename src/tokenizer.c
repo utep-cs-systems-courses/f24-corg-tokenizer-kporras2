@@ -2,21 +2,23 @@
 #include <stdio.h>
 #include "tokenizer.h" //project related declarations
 
+//function that checks if a character is a space, tab and is non-zero aka terminator
 int space_char(char c){
   if((c == ' ' || c == '\t') && c != '\0'){
-    return 1;
+    return 1;//true
   }
   else{
-    return 0;
+    return 0;//false
   }
 }
 
+//function that checks if a charater is non-zerp and is not a space or not a tab
 int non_space_char(char c){
   if((c == ' ' || c == '\t') && c != '\0'){
-    return 0;
+    return 0;//false
   }
   else{
-    return 1;
+    return 1;//true
   }
 }
 
@@ -60,7 +62,6 @@ int count_tokens(char *str){
   
   while(*current){
     
-    printf("%c\n",*current);
     if(non_space_char(*current)){
       count++;
     }

@@ -6,12 +6,12 @@ int main(){
   printf("Welcome to the tokenizer machine! \n");
   char token_input[100];
   char menu_input; // char used to dictate menu function
-  char id_input[4];
+  int id_input;
   char *retrived_token;
   List *history = init_history();
   // main_menu loop
   while(1){
-    printf("------------------------------------------\n");
+    printf("\n------------------------------------------\n");
     printf("Would you like to tokenize \"t\" , view history \"h\", Find token by I.D. \"i\", or quit \"q\"\n ");
     printf(">");
 
@@ -42,8 +42,7 @@ int main(){
 	printf("Please enter the id of the token you are looking for\n");
 	printf(">");
 
-	fgets(id_input, sizeof(id_input), stdin);
-	scanf();
+	scanf("%5d", &id_input);
 	//call id finding
 	if(get_history(history, id_input) != NULL){
 	  retrived_token = get_history(history, id_input);
